@@ -35,7 +35,7 @@ class ShooterSubSearcher(BaseSubSearcher):
         result = {}
         for language in languages:
             payload['lang'] = self.SHOOTER_LANGUAGES_MAP.get(language)
-            res = self.session.post(self.API_URL, data=payload)
+            res = self.session.post(self.API_URL, data=payload, verify=False)
             if res.status_code == requests.codes.ok:
                 try:
                     result[language] = res.json()
